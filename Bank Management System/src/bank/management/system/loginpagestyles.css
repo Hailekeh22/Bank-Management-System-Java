@@ -1,0 +1,27 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 4, 2024, 8:22:06 PM
+    Author     : hailek
+*/
+
+.loginpage {
+    -fx-background-color: linear-gradient(to right , #1b54b7 ,#b71c98)
+}
+
+#button {
+   -fx-background-color: #e6ea08;
+   -fx-outline: none;
+   -fx-transition:2s ease;
+}
+
+#button:hover {
+    -fx-background-color: #e4cd05;
+    
+}
+
+.rightlogin {
+    -fx-background-color: white;
+}

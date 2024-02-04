@@ -18,20 +18,38 @@
             <FontAwesomeIconView fill="#e6ea08" glyphName="USER" layoutX="145.0" layoutY="128.0" size="30" />
             <TextField layoutX="42.0" layoutY="176.0" prefHeight="38.0" prefWidth="228.0" promptText="User Name" />
             <PasswordField layoutX="42.0" layoutY="225.0" prefHeight="38.0" prefWidth="228.0" promptText="Password" />
-            <Button id="button" layoutX="42.0" layoutY="278.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="228.0" stylesheets="@loginpagestyles.css" text="Button" />
+            <Button id="button" layoutX="42.0" layoutY="278.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="228.0" stylesheets="@loginpagestyles.css" text="Login" textFill="#151518">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             <Label layoutX="102.0" layoutY="141.0" text="Teller Login " textFill="#e6ea08">
                <font>
                   <Font name="Poppins Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="16.0" layoutY="429.0" mnemonicParsing="false" text="Admin" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="314.0" prefHeight="468.0" prefWidth="409.0">
+      <AnchorPane layoutX="314.0" prefHeight="468.0" prefWidth="409.0" styleClass="rightlogin" stylesheets="@loginpagestyles.css">
          <children>
-            <ImageView fitHeight="149.0" fitWidth="338.0" layoutX="36.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="257.0" fitWidth="402.0" layoutX="4.0" layoutY="-38.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/Logo.png" />
+                  <Image url="@../../../images/logo.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="131.0" fitWidth="204.0" layoutX="46.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/card1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="129.0" fitWidth="210.0" layoutX="174.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/card2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="131.0" fitWidth="204.0" layoutX="72.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/card3.png" />
                </image>
             </ImageView>
          </children>

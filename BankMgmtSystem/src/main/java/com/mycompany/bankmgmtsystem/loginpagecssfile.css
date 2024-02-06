@@ -1,0 +1,12 @@
+/* 
+    Created on : Feb 7, 2024, 12:06:02 AM
+    Author     : hailek
+*/
+
+.leftlogin {
+    -fx-background-color: linear-gradient(to bottom left, #350068, #ff6978);
+}
+
+.input {
+    color: #fff;
+}

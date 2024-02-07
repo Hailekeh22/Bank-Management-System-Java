@@ -4,7 +4,7 @@
 */
 
 .leftlogin {
-    -fx-background-color: linear-gradient(to bottom left, #350068, #ff6978);
+    -fx-background-color: linear-gradient(to left, #350068, #ff6978);
 }
 
 .input {

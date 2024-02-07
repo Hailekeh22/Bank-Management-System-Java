@@ -8,15 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setTitle("Bank Management System");
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
         stage.show();

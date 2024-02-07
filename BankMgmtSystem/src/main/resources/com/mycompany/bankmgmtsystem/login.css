@@ -4,9 +4,24 @@
 */
 
 .leftlogin {
-    -fx-background-color: linear-gradient(to left, #350068, #ff6978);
+    -fx-background-color: linear-gradient(to left, #ad209a, #2152b6);
 }
 
 .input {
     color: #fff;
+}
+
+.loginbtn {
+    -fx-background-color: #e6ea08;
+    -fx-outline:none;
+    -fx-transition: 2s ease;
+}
+
+.rightpage {
+    -fx-background-color: #fff;
+}
+
+.loginbtn:hover {
+    -fx-background-color: #73be73;
+
 }

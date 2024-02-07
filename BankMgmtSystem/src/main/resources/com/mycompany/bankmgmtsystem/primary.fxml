@@ -9,30 +9,48 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="450.0" prefWidth="350.0" styleClass="leftlogin" stylesheets="@login.css">
+      <AnchorPane prefHeight="550.0" prefWidth="376.0" styleClass="leftlogin" stylesheets="@login.css">
          <children>
-            <Button layoutX="102.0" layoutY="284.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" text="Login" />
-            <Text fill="WHITE" layoutX="90.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teller Login">
+            <Button layoutX="39.0" layoutY="324.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="298.0" styleClass="loginbtn" stylesheets="@login.css" text="Login" textFill="#030303">
                <font>
-                  <Font size="27.0" />
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font></Button>
+            <Text fill="#dff200" layoutX="112.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teller Login" wrappingWidth="142.6776123046875">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <PasswordField layoutX="48.0" layoutY="225.0" prefHeight="36.0" prefWidth="254.0" promptText="Password" />
-            <TextField layoutX="48.0" layoutY="178.0" prefHeight="36.0" prefWidth="254.0" promptText="User Name" />
-            <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="140.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+            <PasswordField layoutX="39.0" layoutY="276.0" prefHeight="36.0" prefWidth="298.0" promptText="Password" />
+            <TextField layoutX="39.0" layoutY="229.0" prefHeight="36.0" prefWidth="297.0" promptText="User Name" />
+            <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="158.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/usericon.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="350.0" prefHeight="450.0" prefWidth="409.0">
+      <AnchorPane layoutX="377.0" prefHeight="550.0" prefWidth="501.0" styleClass="rightpage" stylesheets="@login.css">
          <children>
-            <ImageView fitHeight="252.0" fitWidth="408.0" layoutX="4.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="317.0" fitWidth="502.0" layoutX="14.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/logo.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="141.0" fitWidth="211.0" layoutX="67.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/card1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="141.0" fitWidth="223.0" layoutX="243.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/card2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="143.0" fitWidth="223.0" layoutX="153.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/card3.png" />
                </image>
             </ImageView>
          </children>

@@ -14,7 +14,6 @@
 .loginbtn {
     -fx-background-color: #e6ea08;
     -fx-outline:none;
-    -fx-transition: 2s ease;
 }
 
 .rightpage {
@@ -22,6 +21,6 @@
 }
 
 .loginbtn:hover {
-    -fx-background-color: #73be73;
-
+    -fx-background-color: #0591af;
+  
 }

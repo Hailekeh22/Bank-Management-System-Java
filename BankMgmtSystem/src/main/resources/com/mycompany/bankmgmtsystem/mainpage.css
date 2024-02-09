@@ -7,3 +7,16 @@
     -fx-background-color: linear-gradient(to left, #ad209a, #2152b6);
 }
 
+.logoutcontainer {
+    -fx-background-color: #000435;
+}
+
+.mainbtn {
+    -fx-background-color: #e6ea08;
+    -fx-outline:none;
+}
+
+.mainbtn:hover {
+    -fx-background-color: #0591af;
+  
+}

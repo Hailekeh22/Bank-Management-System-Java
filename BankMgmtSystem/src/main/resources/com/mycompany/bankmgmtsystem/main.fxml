@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="684.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="684.0" prefWidth="332.0" styleClass="admincontol" stylesheets="@mainpage.css">
+         <children>
+            <Label layoutX="81.0" layoutY="62.0" prefHeight="54.0" prefWidth="164.0" text="Welcome" textFill="#fafafa">
+               <font>
+                  <Font name="Poppins Bold" size="33.0" />
+               </font>
+            </Label>
+            <Button layoutX="26.0" layoutY="207.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Create Account">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="26.0" layoutY="260.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Make a Deposite">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="26.0" layoutY="314.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Withdrawal">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="26.0" layoutY="369.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Transfer Money">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <CubicCurve controlX1="-51.308250427246094" controlX2="83.31376647949219" controlY1="-62.651466369628906" controlY2="53.99998474121094" endX="161.59344482421875" endY="-12.818344116210938" fill="#f5f5f500" layoutX="166.0" layoutY="153.0" startX="-166.00001525878906" startY="6.1999969482421875" stroke="#16ff40" strokeWidth="5.0" />
+            <Button layoutX="26.0" layoutY="425.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="All Customers">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="53.0" layoutY="583.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="226.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Log out" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bankmgmtsystem.PrimaryController">
    <children>
       <AnchorPane prefHeight="550.0" prefWidth="376.0" styleClass="leftlogin" stylesheets="@login.css">
          <children>
-            <Button layoutX="39.0" layoutY="324.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="298.0" styleClass="loginbtn" stylesheets="@login.css" text="Login" textFill="#030303">
+            <Button fx:id="loginbtn" layoutX="39.0" layoutY="324.0" mnemonicParsing="false" onAction="#show" prefHeight="38.0" prefWidth="298.0" styleClass="loginbtn" stylesheets="@login.css" text="Login" textFill="#030303">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font></Button>
@@ -22,8 +22,8 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <PasswordField layoutX="39.0" layoutY="276.0" prefHeight="36.0" prefWidth="298.0" promptText="Password" />
-            <TextField layoutX="39.0" layoutY="229.0" prefHeight="36.0" prefWidth="297.0" promptText="User Name" />
+            <PasswordField fx:id="password" layoutX="39.0" layoutY="276.0" prefHeight="36.0" prefWidth="298.0" promptText="Password" />
+            <TextField fx:id="username" layoutX="39.0" layoutY="229.0" prefHeight="36.0" prefWidth="297.0" promptText="User Name" />
             <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="158.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/usericon.png" />

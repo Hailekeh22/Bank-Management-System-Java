@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Bank Management System");
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("main"));
         stage.setScene(scene);
         stage.show();
     }

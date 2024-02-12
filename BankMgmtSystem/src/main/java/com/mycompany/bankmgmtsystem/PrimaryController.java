@@ -17,6 +17,7 @@ public class PrimaryController {
     @FXML
     private TextField username;
 
+   
 
     public void show() {
     System.out.println("Hello you Clicked the login buton");

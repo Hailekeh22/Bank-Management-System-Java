@@ -6,11 +6,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bankmgmtsystem.PrimaryController">
-   <children>
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bankmgmtsystem.PrimaryController">
+    <AnchorPane fx:id="loginform" maxHeight="550.0" maxWidth="894.0" minHeight="549.0" minWidth="877.0" prefHeight="550.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+         <children>
       <AnchorPane prefHeight="550.0" prefWidth="376.0" styleClass="leftlogin" stylesheets="@login.css">
          <children>
             <Button fx:id="loginbtn" layoutX="39.0" layoutY="324.0" mnemonicParsing="false" onAction="#show" prefHeight="38.0" prefWidth="298.0" styleClass="loginbtn" stylesheets="@login.css" text="Login" textFill="#030303">
@@ -31,7 +33,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="377.0" prefHeight="550.0" prefWidth="501.0" styleClass="rightpage" stylesheets="@login.css">
+      <AnchorPane layoutX="377.0" prefHeight="550.0" prefWidth="286.0" styleClass="rightpage" stylesheets="@login.css">
          <children>
             <ImageView fitHeight="317.0" fitWidth="502.0" layoutX="14.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,3 +60,4 @@
       
    </children>
 </AnchorPane>
+</StackPane>

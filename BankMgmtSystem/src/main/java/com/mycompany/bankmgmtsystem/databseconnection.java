@@ -2,7 +2,6 @@ package com.mycompany.bankmgmtsystem;
 
 
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class databseconnection {
         
         Class.forName("com.mysql.cj.jdbc.Driver");        
                 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root","password");     
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root","h@ile22199253");     
         System.out.println("connected! " +  connection.getCatalog()); 
 }
 

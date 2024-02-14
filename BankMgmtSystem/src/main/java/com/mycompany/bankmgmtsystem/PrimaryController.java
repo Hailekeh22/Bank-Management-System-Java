@@ -79,7 +79,7 @@ public class PrimaryController {
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Login Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username Or Password");
+                    alert.setContentText("Wrong Username or Password");
                     alert.showAndWait();
                 }
             }

@@ -2,7 +2,13 @@ package com.mycompany.bankmgmtsystem;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class SecondaryController {
     
@@ -24,6 +30,7 @@ public class SecondaryController {
     
     @FXML
     private AnchorPane homepane;
+    
     
     @FXML
     private void initialize() {
@@ -59,6 +66,25 @@ public class SecondaryController {
     @FXML
     private void showAllCustomersPage() {
         setVisibility(allcustomerspane);
+    }
+    
+    
+    @FXML
+    private void logout() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
+        Parent root = loader.load();
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Loging Out");
+        alert.setHeaderText(null);
+        alert.setContentText("Logout Successful");
+        alert.showAndWait();
+        
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) homepane.getScene().getWindow();
+        stage.setTitle("Zemen Bank's Banking System");
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void setVisibility(AnchorPane pane) {

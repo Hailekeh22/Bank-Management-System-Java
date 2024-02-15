@@ -70,6 +70,7 @@ public class PrimaryController {
                     loginbtn.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
                     Stage stage = new Stage();
+                    stage.setTitle("Zemen Bank's Banking System");
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
@@ -81,6 +82,8 @@ public class PrimaryController {
                     alert.setHeaderText(null);
                     alert.setContentText("Wrong Username or Password");
                     alert.showAndWait();
+                    username.setText("");
+                    password.setText("");
                 }
             }
             

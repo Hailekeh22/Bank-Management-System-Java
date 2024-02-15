@@ -38,7 +38,7 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button layoutX="50.0" layoutY="605.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="226.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Log out" />
+            <Button fx:id="logoutbtn" layoutX="50.0" layoutY="605.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="226.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Log out" />
             <Line endX="257.7929382324219" endY="-24.600006103515625" layoutX="14.0" layoutY="131.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="209.17160034179688" endY="-24.600006103515625" layoutX="-21.0" layoutY="152.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="-11.000030517578125" layoutX="343.0" layoutY="560.0" startX="-247.82839965820312" stroke="WHITE" strokeWidth="3.0" />

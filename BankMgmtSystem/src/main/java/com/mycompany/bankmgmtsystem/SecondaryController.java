@@ -77,7 +77,7 @@ public class SecondaryController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Loging Out");
         alert.setHeaderText(null);
-        alert.setContentText("Logout Successful");
+        alert.setContentText("Logout successful. See you soon!");
         alert.showAndWait();
         
         Scene scene = new Scene(root);

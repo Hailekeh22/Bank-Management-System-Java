@@ -53,9 +53,9 @@ public class PrimaryController {
             if(username.getText().isEmpty() || password.getText().isEmpty()){
                 
                 alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Login Error");
+                alert.setTitle("Invalid Login");
                 alert.setHeaderText(null);
-                alert.setContentText("Please Write your username and password");
+                alert.setContentText("Please Enter Your Username and Password");
                 alert.showAndWait();
             
             } else {

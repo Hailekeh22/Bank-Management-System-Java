@@ -18,23 +18,23 @@
                   <Font name="Arial Black" size="33.0" />
                </font>
             </Label>
-            <Button layoutX="25.0" layoutY="243.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Create Account">
+            <Button fx:id="createaccountbtn" layoutX="25.0" layoutY="243.0" mnemonicParsing="false" onAction="#showCreateAccountPage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Create Account">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Make a Deposite">
+            <Button fx:id="depositbtn" layoutX="25.0" layoutY="295.0" mnemonicParsing="false" onAction="#showDepositPage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Make a Deposit">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button layoutX="25.0" layoutY="347.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Withdrawal">
+            <Button fx:id="withdrawalbtn" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#showWithdrawalPage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Withdrawal">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button layoutX="25.0" layoutY="399.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Transfer Money">
+            <Button fx:id="transfermoneybtn" layoutX="25.0" layoutY="399.0" mnemonicParsing="false" onAction="#showTransferPage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Transfer Money">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button layoutX="25.0" layoutY="451.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="All Customers">
+            <Button fx:id="allcustomersbtn" layoutX="25.0" layoutY="451.0" mnemonicParsing="false" onAction="#showAllCustomersPage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="All Customers">
                <font>
                   <Font size="14.0" />
                </font></Button>
@@ -42,14 +42,14 @@
             <Line endX="257.7929382324219" endY="-24.600006103515625" layoutX="14.0" layoutY="131.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="209.17160034179688" endY="-24.600006103515625" layoutX="-21.0" layoutY="152.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="-11.000030517578125" layoutX="343.0" layoutY="560.0" startX="-247.82839965820312" stroke="WHITE" strokeWidth="3.0" />
-               <Button layoutX="25.0" layoutY="191.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Home">
+               <Button fx:id="homebtn" layoutX="25.0" layoutY="191.0" mnemonicParsing="false" onAction="#showHomePage" prefHeight="43.0" prefWidth="280.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Home">
                   <font>
                      <Font size="14.0" />
                   </font>
                </Button>
          </children>
       </AnchorPane>
-         <AnchorPane layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="createaccountpane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="278.0" layoutY="67.0" prefHeight="37.0" prefWidth="219.0" text="CREATE ACCOUNT">
                   <font>
@@ -99,7 +99,7 @@
                </Button>
             </children>
          </AnchorPane>
-         <AnchorPane layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="withdrawalpane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="308.0" layoutY="123.0" prefHeight="42.0" prefWidth="137.0" text="Withdrawal">
                   <font>
@@ -121,7 +121,7 @@
                <Button layoutX="244.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Confirm" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="depositpane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="276.0" layoutY="128.0" prefHeight="30.0" prefWidth="160.0" text="Make a Deposit">
                   <font>
@@ -143,7 +143,7 @@
                <Button layoutX="244.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="transferpane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="286.0" layoutY="60.0" prefHeight="35.0" prefWidth="171.0" text="Transfer Money">
                   <font>
@@ -181,6 +181,24 @@
                      </Button>
                   </children>
                </AnchorPane>
+            </children>
+         </AnchorPane>
+         <AnchorPane fx:id="homepane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0" visible="false">
+            <children>
+               <Label layoutX="305.0" layoutY="62.0" text="HOME PAGE">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+         <AnchorPane fx:id="allcustomerspane" layoutX="370.0" layoutY="30.0" prefHeight="624.0" prefWidth="714.0">
+            <children>
+               <Label layoutX="283.0" layoutY="55.0" text="ALL CUSOMERS">
+                  <font>
+                     <Font size="23.0" />
+                  </font>
+               </Label>
             </children>
          </AnchorPane>
    </children>

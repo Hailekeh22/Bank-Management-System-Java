@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bankmgmtsystem.SecondaryController">
-    <AnchorPane id="AnchorPane" prefHeight="730.0" prefWidth="1320.0" styleClass="mainlayout" stylesheets="@mainpage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane id="AnchorPane" prefHeight="730.0" prefWidth="1295.0" styleClass="mainlayout" stylesheets="@mainpage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
         <children>
-      <AnchorPane prefHeight="730.0" prefWidth="332.0" styleClass="admincontol" stylesheets="@mainpage.css">
+      <AnchorPane prefHeight="731.0" prefWidth="332.0" styleClass="admincontol" stylesheets="@mainpage.css">
          <children>
             <Label layoutX="81.0" layoutY="36.0" prefHeight="54.0" prefWidth="182.0" text="Welcome" textFill="#fafafa">
                <font>
@@ -51,7 +51,7 @@
                </Button>
          </children>
       </AnchorPane>
-         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="215.0" layoutY="68.0" prefHeight="37.0" prefWidth="219.0" text="CREATE ACCOUNT">
                   <font>
@@ -101,7 +101,7 @@
                </Button>
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="withdrawalpane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="withdrawalpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="256.0" layoutY="115.0" prefHeight="42.0" prefWidth="137.0" text="Withdrawal">
                   <font>
@@ -123,14 +123,14 @@
                <Button layoutX="216.0" layoutY="381.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="280.0" styleClass="btn" stylesheets="@mainpage.css" text="Confirm" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="depositpane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="depositpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
-               <Label layoutX="276.0" layoutY="128.0" prefHeight="30.0" prefWidth="160.0" text="Make a Deposit">
+               <Label layoutX="245.0" layoutY="122.0" prefHeight="30.0" prefWidth="160.0" text="Make a Deposit">
                   <font>
                      <Font name="Arial Black" size="18.0" />
                   </font>
                </Label>
-               <Label layoutX="95.0" layoutY="227.0" prefHeight="26.0" prefWidth="133.0" text="Account Number">
+               <Label layoutX="64.0" layoutY="227.0" prefHeight="26.0" prefWidth="133.0" text="Account Number">
                   <font>
                      <Font size="16.0" />
                   </font>
@@ -140,12 +140,12 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField layoutX="244.0" layoutY="225.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="244.0" layoutY="308.0" prefHeight="30.0" prefWidth="380.0" />
-               <Button layoutX="244.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
+               <TextField layoutX="228.0" layoutY="225.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField layoutX="228.0" layoutY="307.0" prefHeight="30.0" prefWidth="380.0" />
+               <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="transferpane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="transferpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
             <children>
                <Label layoutX="236.0" layoutY="65.0" prefHeight="35.0" prefWidth="171.0" text="Transfer Money">
                   <font>
@@ -185,25 +185,25 @@
                </AnchorPane>
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="homepane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="homepane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
-               <Label layoutX="261.0" layoutY="49.0" text="HOME PAGE">
+               <Label layoutX="250.0" layoutY="49.0" text="HOME PAGE">
                   <font>
                      <Font size="27.0" />
                   </font>
                </Label>
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="allcustomerspane" layoutX="350.0" layoutY="22.0" prefHeight="624.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="allcustomerspane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
-               <Label layoutX="283.0" layoutY="55.0" text="ALL CUSOMERS">
+               <Label layoutX="245.0" layoutY="55.0" text="ALL CUSOMERS">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Label>
             </children>
          </AnchorPane>
-         <ImageView fitHeight="730.0" fitWidth="300.0" layoutX="1050.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <ImageView fitHeight="731.0" fitWidth="280.0" layoutX="1050.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                <Image url="@Images/screenshot.png" />
             </image>

@@ -70,7 +70,7 @@ public class PrimaryController {
                     loginbtn.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
                     Stage stage = new Stage();
-                    stage.setTitle("Zemen Bank's Banking System");
+                    stage.setTitle("Zemen Bank");
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();

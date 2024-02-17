@@ -82,7 +82,7 @@ public class SecondaryController {
         
         Scene scene = new Scene(root);
         Stage stage = (Stage) homepane.getScene().getWindow();
-        stage.setTitle("Zemen Bank's Banking System");
+        stage.setTitle("Zemen Bank");
         stage.setScene(scene);
         stage.show();
     }

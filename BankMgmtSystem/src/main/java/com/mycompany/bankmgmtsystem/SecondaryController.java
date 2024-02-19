@@ -6,12 +6,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -95,6 +98,7 @@ public class SecondaryController {
                 phoneNumberField.setText("");
                 addressField.setText("");
                 initialDepositField.setText("");
+                initializetable();
             } else {
                 showAlert(Alert.AlertType.ERROR,"Error", "There is an Error In registering the user ");
             }
@@ -154,6 +158,9 @@ private void deposit() {
 
         if (completedDeposit > 0) {
             showAlert(Alert.AlertType.INFORMATION, "Success", "Sucessfully Deposited");
+            accountnumberfordeposit.setText("");
+            depositamount.setText("");
+            initializetable();
         } else {
             showAlert(Alert.AlertType.ERROR, "Error", "Deposit Failed. Account number Doesn't exist.");
         }
@@ -213,6 +220,9 @@ private void withdrawal() {
 
                 if (rowsAffected > 0) {
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Withdrawal successful .");
+                    withdrawalamountinput.setText("");
+                    witdrawalaccountinput.setText("");
+                    initializetable();
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to withdraw.");
                 }
@@ -231,13 +241,54 @@ private void withdrawal() {
     }
 }
 
-    
-
     // WITHDRAWAL MONEY FUNCTIONALITY ENDS
+
+
+
+
+
+    //SHOW USERS FUNCTIONALITY STARTS
+
+    @FXML
+    private TableView<Customer> tableView;
+
+    @FXML
+    private TableColumn<Customer, Integer> accountNumberColumn;
+
+    @FXML
+    private TableColumn<Customer, String> firstNameColumn;
+
+    @FXML
+    private TableColumn<Customer, String> lastNameColumn;
+
+    @FXML
+    private TableColumn<Customer, String> addressColumn;
+
+    @FXML
+    private TableColumn<Customer, Integer> amountColumn;
+
+    // Method to populate TableView with data from the database
+    @FXML
+    private void initializetable() {
+        try {
+            accountNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomeraccount().asObject());
+            firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomerfname());
+            lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomerlname());
+            addressColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomeraddress());
+            amountColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomeramount().asObject());
+
+            tableView.setItems(CustomerDAO.getAllRecords());
+        } catch (SQLException | ClassNotFoundException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+        }
+    }  
+
+    //SHOW USERS ENDS
       
     @FXML
     private void initialize() {       
         showHomePage();
+        initializetable();
     }
 
     @FXML

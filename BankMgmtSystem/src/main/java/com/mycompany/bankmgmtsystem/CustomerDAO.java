@@ -10,17 +10,17 @@ import java.sql.SQLException;
 
 public class CustomerDAO {
 
-    // Method to fetch data from the database and return as ObservableList<Customer>
+    
     public static ObservableList<Customer> getAllRecords() throws ClassNotFoundException, SQLException {
         ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
-        // Establishing connection to the database
+        
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253")) {
             String sql = "SELECT accountnumber, firstname, lastname, address, amount FROM customers";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
-            // Iterating through the ResultSet and adding Customer objects to the list
+            
             while (resultSet.next()) {
                 int accountNumber = resultSet.getInt("accountnumber");
                 String firstName = resultSet.getString("firstname");
@@ -39,7 +39,7 @@ public class CustomerDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw e; // Rethrow the exception for handling at a higher level
+            throw e; 
         }
 
         return customerList;

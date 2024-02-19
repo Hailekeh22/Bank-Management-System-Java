@@ -305,7 +305,7 @@ private void deleteAccount() {
     try {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
 
-        // Check the account balance
+        
         String balanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
         PreparedStatement balanceStatement = connection.prepareStatement(balanceQuery);
         balanceStatement.setString(1, accountNumber);
@@ -315,7 +315,6 @@ private void deleteAccount() {
             int balance = balanceResult.getInt("amount");
 
             if (balance == 0) {
-                // Account balance is 0, proceed with deletion
                 String deleteQuery = "DELETE FROM customers WHERE accountnumber = ?";
                 PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
                 deleteStatement.setString(1, accountNumber);
@@ -325,7 +324,7 @@ private void deleteAccount() {
                 if (deletedRows > 0) {
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Account deleted successfully.");
                     accounttoremoveinput.setText("");
-                    initializetable(); // Refresh TableView
+                    initializetable(); 
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Error", "Account not found or deletion failed.");
                 }

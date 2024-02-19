@@ -1,12 +1,17 @@
 package com.mycompany.bankmgmtsystem;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -30,6 +35,87 @@ public class SecondaryController {
     
     @FXML
     private AnchorPane homepane;
+    
+    // CUSTOMER REGISTRATION INPUTS AND SUBMIT BUTTON
+    
+    @FXML
+    private TextField firstNameField;
+    
+    @FXML
+    private TextField lastNameField;
+     
+    @FXML
+    private TextField sexField;
+    
+    @FXML
+    private TextField phoneNumberField;
+    
+    @FXML
+    private TextField addressField;
+    
+    @FXML
+    private TextField initialDepositField;
+    
+    
+    @FXML
+    private void registerUser() {
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        String sex = sexField.getText();
+        String phoneNumber = phoneNumberField.getText();
+        String address = addressField.getText();
+        String initialDeposit = initialDepositField.getText();
+
+        
+        if (firstName.isEmpty() || lastName.isEmpty() || sex.isEmpty() || phoneNumber.isEmpty() || address.isEmpty() || initialDeposit.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR,"Error", "PLease Fill all the Inputs");
+            return;
+        }
+
+       
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root","h@ile22199253");
+            String sql = "INSERT INTO customers (firstname, lastname, sex, phonenumber, address, amount) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, sex);
+            statement.setString(4, phoneNumber);
+            statement.setString(5, address);
+            statement.setString(6, initialDeposit);
+
+            int registerd = statement.executeUpdate();
+            
+            if (registerd > 0) {
+                showAlert(Alert.AlertType.INFORMATION,"Success", "Sucessfully Registerd ");
+                firstNameField.setText("");
+                lastNameField.setText("");
+                sexField.setText("");
+                phoneNumberField.setText("");
+                addressField.setText("");
+                initialDepositField.setText("");
+            } else {
+                showAlert(Alert.AlertType.ERROR,"Error", "There is an Error In registering the user ");
+            }
+
+            connection.close();
+        } catch (SQLException e) {
+            showAlert(Alert.AlertType.ERROR,"Error", "Database error: " + e.getMessage());
+        }
+        
+        
+}
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+    Alert alert = new Alert(type);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
+    
+    // CUSTOMER REGISTRATION ENDS
+    
     
     
     @FXML
@@ -103,4 +189,5 @@ public class SecondaryController {
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
+
 }

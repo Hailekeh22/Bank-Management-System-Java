@@ -26,6 +26,10 @@
     
 }
 
+.btn:hover {
+    -fx-background-color: #e6ea08;
+}
+
 .mainlayout {
     -fx-background-color:#fff;
 }

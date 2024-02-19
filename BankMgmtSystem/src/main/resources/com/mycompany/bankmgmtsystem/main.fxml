@@ -51,7 +51,7 @@
                </Button>
          </children>
       </AnchorPane>
-         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
             <children>
                <Label layoutX="215.0" layoutY="68.0" prefHeight="37.0" prefWidth="219.0" text="CREATE ACCOUNT">
                   <font>
@@ -88,13 +88,13 @@
                      <Font size="15.0" />
                   </font>
                </Label>
-               <TextField layoutX="179.0" layoutY="172.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="179.0" layoutY="222.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="179.0" layoutY="272.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="179.0" layoutY="322.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="179.0" layoutY="372.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="179.0" layoutY="422.0" prefHeight="30.0" prefWidth="380.0" />
-               <Button layoutX="179.0" layoutY="476.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Register User" textFill="#fafafa">
+               <TextField fx:id="firstNameField" layoutX="179.0" layoutY="172.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="lastNameField" layoutX="179.0" layoutY="222.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="sexField" layoutX="179.0" layoutY="272.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="phoneNumberField" layoutX="179.0" layoutY="322.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="addressField" layoutX="179.0" layoutY="372.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="initialDepositField" layoutX="179.0" layoutY="422.0" prefHeight="30.0" prefWidth="380.0" />
+               <Button layoutX="179.0" layoutY="476.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Register User" textFill="#fafafa">
                   <font>
                      <Font size="16.0" />
                   </font>
@@ -145,7 +145,7 @@
                <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="transferpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="transferpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="236.0" layoutY="65.0" prefHeight="35.0" prefWidth="171.0" text="Transfer Money">
                   <font>

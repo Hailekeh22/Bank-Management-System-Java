@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +37,7 @@ public class SecondaryController {
     @FXML
     private AnchorPane homepane;
     
-    // CUSTOMER REGISTRATION INPUTS AND SUBMIT BUTTON
+    // CUSTOMER REGISTRATION SECTION STARTS
     
     @FXML
     private TextField firstNameField;
@@ -119,7 +120,7 @@ public class SecondaryController {
     
     
     
-    // DEPOSIT TO ACCOUNT FUNCTIONALITY
+    // DEPOSIT TO ACCOUNT FUNCTIONALITY STARTES
     
     @FXML
     private TextField accountnumberfordeposit;
@@ -165,8 +166,74 @@ private void deposit() {
     }
 }
 
-    
     // DEPOSIT TO ACCOUNT ENDS
+
+
+
+
+    // WITHDRAWAL MONEY FUNCTIONALITY STARTS
+
+    @FXML
+    private TextField withdrawalamountinput;
+    
+    @FXML
+    private TextField witdrawalaccountinput;
+
+    @FXML
+private void withdrawal() {
+    String accountNumber = witdrawalaccountinput.getText();
+    String withdrawalAmount = withdrawalamountinput.getText();
+
+    if (accountNumber.isEmpty() || withdrawalAmount.isEmpty()) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all the inputs.");
+        return;
+    }
+
+    try {
+        
+        int withdrawalValue = Integer.parseInt(withdrawalAmount);
+
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
+        String sql = "SELECT amount FROM customers WHERE accountnumber = ?";
+        PreparedStatement selectStatement = connection.prepareStatement(sql);
+        selectStatement.setString(1, accountNumber);
+
+        ResultSet resultSet = selectStatement.executeQuery();
+
+        if (resultSet.next()) {
+            double currentAmount = resultSet.getDouble("amount");
+
+            if (currentAmount >= withdrawalValue) {
+                sql = "UPDATE customers SET amount = amount - ? WHERE accountnumber = ?";
+                PreparedStatement updateStatement = connection.prepareStatement(sql);
+                updateStatement.setDouble(1, withdrawalValue);
+                updateStatement.setString(2, accountNumber);
+
+                int rowsAffected = updateStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Withdrawal successful .");
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to withdraw.");
+                }
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "Your Account Does't have the Requested Amount of Money");
+            }
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please Enter A valid Account Number");
+        }
+
+        connection.close();
+    } catch (NumberFormatException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Invalid withdrawal amount. Please enter a valid number.");
+    } catch (SQLException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+    }
+}
+
+    
+
+    // WITHDRAWAL MONEY FUNCTIONALITY ENDS
       
     @FXML
     private void initialize() {       
@@ -223,7 +290,6 @@ private void deposit() {
     }
 
     private void setVisibility(AnchorPane pane) {
-        // Hide all AnchorPanes
         homepane.setVisible(false);
         createaccountpane.setVisible(false);
         depositpane.setVisible(false);

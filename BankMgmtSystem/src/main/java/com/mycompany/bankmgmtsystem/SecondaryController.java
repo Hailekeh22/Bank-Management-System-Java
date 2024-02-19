@@ -32,6 +32,9 @@ public class SecondaryController {
     private AnchorPane depositpane;
     
     @FXML
+    private AnchorPane deletepane;
+    
+    @FXML
     private AnchorPane createaccountpane;
     
     @FXML
@@ -284,6 +287,63 @@ private void withdrawal() {
     }  
 
     //SHOW USERS ENDS
+    
+    //DELETE ACCOUNT FUNCTIONALITY STARTS
+    
+    @FXML
+    private TextField accounttoremoveinput;
+    
+    @FXML
+private void deleteAccount() {
+    String accountNumber = accounttoremoveinput.getText();
+
+    if (accountNumber.isEmpty()) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Please enter the account number to delete.");
+        return;
+    }
+
+    try {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
+
+        // Check the account balance
+        String balanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
+        PreparedStatement balanceStatement = connection.prepareStatement(balanceQuery);
+        balanceStatement.setString(1, accountNumber);
+        ResultSet balanceResult = balanceStatement.executeQuery();
+
+        if (balanceResult.next()) {
+            int balance = balanceResult.getInt("amount");
+
+            if (balance == 0) {
+                // Account balance is 0, proceed with deletion
+                String deleteQuery = "DELETE FROM customers WHERE accountnumber = ?";
+                PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
+                deleteStatement.setString(1, accountNumber);
+
+                int deletedRows = deleteStatement.executeUpdate();
+
+                if (deletedRows > 0) {
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Account deleted successfully.");
+                    accounttoremoveinput.setText("");
+                    initializetable(); // Refresh TableView
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Account not found or deletion failed.");
+                }
+            } else {
+                showAlert(Alert.AlertType.WARNING, "Warning", "Account balance is not 0. Please withdraw the money before deleting the account.");
+            }
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Account not found.");
+        }
+
+        connection.close();
+    } catch (SQLException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+    }
+}
+
+    
+    //DELETE ACCOUNT FUNCTIONALITY ENDS
       
     @FXML
     private void initialize() {       
@@ -294,6 +354,11 @@ private void withdrawal() {
     @FXML
     private void showHomePage() {
         setVisibility(homepane);
+    }
+    
+    @FXML
+    private void showDeleteAccountPage(){
+        setVisibility(deletepane);
     }
 
     @FXML
@@ -343,6 +408,7 @@ private void withdrawal() {
     private void setVisibility(AnchorPane pane) {
         homepane.setVisible(false);
         createaccountpane.setVisible(false);
+        deletepane.setVisible(false);
         depositpane.setVisible(false);
         withdrawalpane.setVisible(false);
         transferpane.setVisible(false);

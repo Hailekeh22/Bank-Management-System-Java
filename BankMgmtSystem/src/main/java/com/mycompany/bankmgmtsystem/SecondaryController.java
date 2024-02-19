@@ -116,6 +116,9 @@ public class SecondaryController {
     // CUSTOMER REGISTRATION ENDS
     
     
+    
+    
+    
     // DEPOSIT TO ACCOUNT FUNCTIONALITY
     
     @FXML
@@ -123,6 +126,45 @@ public class SecondaryController {
     
     @FXML
     private TextField depositamount;
+    
+    
+    @FXML
+private void deposit() {
+    String accountNumber = accountnumberfordeposit.getText();
+    String depositAmount = depositamount.getText();
+
+    if (accountNumber.isEmpty() || depositAmount.isEmpty()) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Fill The Inputs Before Depositing");
+        return;
+    }
+
+    try {
+        
+        int depositValue = Integer.parseInt(depositAmount);
+
+
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
+        String sql = "UPDATE customers SET amount = amount + ? WHERE accountnumber = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, depositValue);
+        statement.setString(2, accountNumber);
+
+        int completedDeposit = statement.executeUpdate();
+
+        if (completedDeposit > 0) {
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Sucessfully Deposited");
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Deposit Failed. Account number Doesn't exist.");
+        }
+
+        connection.close();
+    } catch (NumberFormatException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Invalid deposit amount. Please enter a valid number.");
+    } catch (SQLException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+    }
+}
+
     
     // DEPOSIT TO ACCOUNT ENDS
       

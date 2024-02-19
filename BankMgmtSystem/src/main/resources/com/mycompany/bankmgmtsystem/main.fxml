@@ -142,7 +142,7 @@
                </Label>
                <TextField fx:id="accountnumberfordeposit" layoutX="228.0" layoutY="225.0" prefHeight="30.0" prefWidth="380.0" />
                <TextField fx:id="depositamount" layoutX="228.0" layoutY="307.0" prefHeight="30.0" prefWidth="380.0" />
-               <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
+               <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" onAction="#deposit" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
          <AnchorPane fx:id="transferpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">

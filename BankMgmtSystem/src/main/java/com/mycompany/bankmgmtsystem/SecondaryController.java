@@ -102,8 +102,7 @@ public class SecondaryController {
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR,"Error", "Database error: " + e.getMessage());
         }
-        
-        
+             
 }
 
     private void showAlert(Alert.AlertType type, String title, String message) {
@@ -117,10 +116,18 @@ public class SecondaryController {
     // CUSTOMER REGISTRATION ENDS
     
     
+    // DEPOSIT TO ACCOUNT FUNCTIONALITY
     
     @FXML
-    private void initialize() {
-        
+    private TextField accountnumberfordeposit;
+    
+    @FXML
+    private TextField depositamount;
+    
+    // DEPOSIT TO ACCOUNT ENDS
+      
+    @FXML
+    private void initialize() {       
         showHomePage();
     }
 

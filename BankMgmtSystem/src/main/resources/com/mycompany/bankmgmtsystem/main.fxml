@@ -51,7 +51,7 @@
                </Button>
          </children>
       </AnchorPane>
-         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="createaccountpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="215.0" layoutY="68.0" prefHeight="37.0" prefWidth="219.0" text="CREATE ACCOUNT">
                   <font>
@@ -123,7 +123,7 @@
                <Button layoutX="216.0" layoutY="381.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="280.0" styleClass="btn" stylesheets="@mainpage.css" text="Confirm" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="depositpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="depositpane" layoutX="350.0" layoutY="22.0" prefHeight="695.0" prefWidth="650.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
             <children>
                <Label layoutX="245.0" layoutY="122.0" prefHeight="30.0" prefWidth="160.0" text="Make a Deposit">
                   <font>
@@ -140,8 +140,8 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField layoutX="228.0" layoutY="225.0" prefHeight="30.0" prefWidth="380.0" />
-               <TextField layoutX="228.0" layoutY="307.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="accountnumberfordeposit" layoutX="228.0" layoutY="225.0" prefHeight="30.0" prefWidth="380.0" />
+               <TextField fx:id="depositamount" layoutX="228.0" layoutY="307.0" prefHeight="30.0" prefWidth="380.0" />
                <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>

@@ -152,7 +152,7 @@
                <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" onAction="#deposit" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="transferpane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="transferpane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="236.0" layoutY="65.0" prefHeight="35.0" prefWidth="171.0" text="Transfer Money">
                   <font>
@@ -192,13 +192,32 @@
                </AnchorPane>
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="homepane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="homepane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
             <children>
-               <Label layoutX="250.0" layoutY="49.0" text="HOME PAGE">
-                  <font>
-                     <Font size="27.0" />
-                  </font>
-               </Label>
+               <ImageView fitHeight="522.0" fitWidth="394.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" styleClass="imag">
+                  <image>
+                     <Image url="@Images/forhomepage.jpg" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="200.0" fitWidth="266.0" layoutX="419.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" styleClass="imag">
+                  <image>
+                     <Image url="@Images/Phforhome.jpg" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="374.0" fitWidth="486.0" layoutX="199.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" styleClass="imag">
+                  <image>
+                     <Image url="@Images/8A3A9262.jpg" />
+                  </image>
+               </ImageView>
+               <AnchorPane layoutX="242.0" layoutY="25.0" prefHeight="54.0" prefWidth="160.0" styleClass="admincontol" stylesheets="@mainpage.css">
+                  <children>
+                     <Label layoutX="14.0" layoutY="7.0" prefHeight="27.0" prefWidth="178.0" text="HOME PAGE" textFill="WHITE">
+                        <font>
+                           <Font name="Arial Black" size="25.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </AnchorPane>
             </children>
          </AnchorPane>
          <AnchorPane fx:id="allcustomerspane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">

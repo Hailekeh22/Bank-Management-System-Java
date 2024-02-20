@@ -6,8 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -75,7 +73,7 @@ public class SecondaryController {
 
         
         if (firstName.isEmpty() || lastName.isEmpty() || sex.isEmpty() || phoneNumber.isEmpty() || address.isEmpty() || initialDeposit.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR,"Error", "PLease Fill all the Inputs");
+            showAlert(Alert.AlertType.ERROR,"Error", "PLease Fill all the Inputs First");
             return;
         }
 
@@ -103,15 +101,19 @@ public class SecondaryController {
                 initialDepositField.setText("");
                 initializetable();
             } else {
-                showAlert(Alert.AlertType.ERROR,"Error", "There is an Error In registering the user ");
+                showAlert(Alert.AlertType.ERROR,"Error", "The Customer Is Not Registerd Please Try again");
             }
 
             connection.close();
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR,"Error", "Database error: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR,"Error",e.getMessage());
         }
              
-}
+}   // CUSTOMER REGISTRATION ENDS
+    
+    
+    
+    //Alert Control section
 
     private void showAlert(Alert.AlertType type, String title, String message) {
     Alert alert = new Alert(type);
@@ -119,12 +121,11 @@ public class SecondaryController {
     alert.setHeaderText(null);
     alert.setContentText(message);
     alert.showAndWait();
+    
+    //Alert Control section ends
 }
     
-    // CUSTOMER REGISTRATION ENDS
-    
-    
-    
+
     
     
     // DEPOSIT TO ACCOUNT FUNCTIONALITY STARTES
@@ -170,9 +171,9 @@ private void deposit() {
 
         connection.close();
     } catch (NumberFormatException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Invalid deposit amount. Please enter a valid number.");
+        showAlert(Alert.AlertType.ERROR, "Error", "Deposit Amount is not correct");
     } catch (SQLException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+        showAlert(Alert.AlertType.ERROR, "Error",e.getMessage());
     }
 }
 
@@ -190,7 +191,7 @@ private void deposit() {
     private TextField witdrawalaccountinput;
 
     @FXML
-private void withdrawal() {
+    private void withdrawal() {
     String accountNumber = witdrawalaccountinput.getText();
     String withdrawalAmount = withdrawalamountinput.getText();
 
@@ -233,14 +234,14 @@ private void withdrawal() {
                 showAlert(Alert.AlertType.ERROR, "Error", "Your Account Does't have the Requested Amount of Money");
             }
         } else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Please Enter A valid Account Number");
+            showAlert(Alert.AlertType.ERROR, "Error", "Account Doesn't exist");
         }
 
         connection.close();
     } catch (NumberFormatException e) {
         showAlert(Alert.AlertType.ERROR, "Error", "Invalid withdrawal amount. Please enter a valid number.");
     } catch (SQLException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+        showAlert(Alert.AlertType.ERROR, "Error",e.getMessage());
     }
 }
 

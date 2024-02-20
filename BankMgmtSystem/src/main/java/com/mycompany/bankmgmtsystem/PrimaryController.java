@@ -39,12 +39,13 @@ public class PrimaryController {
     //Teller Login Authentication section
     
     public void tellerlogin() {
-        String sql = "SELECT * FROM teller WHERE username = ? and password = ?";
+        
+        String tellerquery = "SELECT * FROM teller WHERE username = ? and password = ?";
         
         connect = dbconnect.databaseconnection();
         
         try {
-            prepare = connect.prepareStatement(sql);
+            prepare = connect.prepareStatement(tellerquery);
             prepare.setString(1, username.getText());
             prepare.setString(2, password.getText());
             
@@ -65,7 +66,7 @@ public class PrimaryController {
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Login Sucess");
                     alert.setHeaderText(null);
-                    alert.setContentText("WELCOME DEAR TELLER!!");
+                    alert.setContentText("Welcome Dear Teller!!");
                     alert.showAndWait();
                     
                     
@@ -82,7 +83,7 @@ public class PrimaryController {
                     alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Login Error!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username or Password. Please Enter A valid Input");
+                    alert.setContentText("Wrong Username or Password. Please Enter a valid data!");
                     alert.showAndWait();
                     username.setText("");
                     password.setText("");
@@ -99,6 +100,7 @@ public class PrimaryController {
     
     @FXML
     private void switchToSecondary() throws IOException {
+        
         App.setRoot("secondary");
     }
 }

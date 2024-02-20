@@ -36,6 +36,8 @@ public class PrimaryController {
     private ResultSet result;
     
     
+    //Teller Login Authentication section
+    
     public void tellerlogin() {
         String sql = "SELECT * FROM teller WHERE username = ? and password = ?";
         

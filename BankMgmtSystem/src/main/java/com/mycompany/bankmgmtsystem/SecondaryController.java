@@ -271,7 +271,6 @@ private void deposit() {
     @FXML
     private TableColumn<Customer, Integer> amountColumn;
 
-    // Method to populate TableView with data from the database
     @FXML
     private void initializetable() {
         try {
@@ -288,6 +287,7 @@ private void deposit() {
     }  
 
     //SHOW USERS ENDS
+    
     
     //DELETE ACCOUNT FUNCTIONALITY STARTS
     

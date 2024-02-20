@@ -152,7 +152,7 @@
                <Button layoutX="228.0" layoutY="388.0" mnemonicParsing="false" onAction="#deposit" prefHeight="30.0" prefWidth="380.0" styleClass="btn" stylesheets="@mainpage.css" text="Deposit" textFill="WHITE" />
             </children>
          </AnchorPane>
-         <AnchorPane fx:id="transferpane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
+         <AnchorPane fx:id="transferpane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
             <children>
                <Label layoutX="236.0" layoutY="65.0" prefHeight="35.0" prefWidth="171.0" text="Transfer Money">
                   <font>
@@ -166,24 +166,24 @@
                            <Font size="18.0" />
                         </font>
                      </Label>
-                     <TextField layoutX="199.0" layoutY="43.0" prefHeight="41.0" prefWidth="360.0" />
+                     <TextField fx:id="senderaccount" layoutX="199.0" layoutY="43.0" prefHeight="41.0" prefWidth="360.0" />
                      <Label layoutX="31.0" layoutY="103.0" prefHeight="18.0" prefWidth="101.0" text="Amount">
                         <font>
                            <Font size="18.0" />
                         </font>
                      </Label>
-                     <TextField layoutX="199.0" layoutY="101.0" prefHeight="41.0" prefWidth="360.0" />
+                     <TextField fx:id="sendingamount" layoutX="199.0" layoutY="101.0" prefHeight="41.0" prefWidth="360.0" />
                   </children>
                </AnchorPane>
                <AnchorPane layoutX="32.0" layoutY="373.0" prefHeight="200.0" prefWidth="584.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
                   <children>
-                     <TextField layoutX="199.0" layoutY="51.0" prefHeight="41.0" prefWidth="360.0" />
+                     <TextField fx:id="reciveraccount" layoutX="199.0" layoutY="51.0" prefHeight="41.0" prefWidth="360.0" />
                      <Label layoutX="31.0" layoutY="57.0" text="Recivers Account">
                         <font>
                            <Font size="18.0" />
                         </font>
                      </Label>
-                     <Button layoutX="167.0" layoutY="127.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="251.0" styleClass="btn" stylesheets="@mainpage.css" text="Transfer" textFill="WHITE">
+                     <Button layoutX="167.0" layoutY="127.0" mnemonicParsing="false" onAction="#transferMoney" prefHeight="42.0" prefWidth="251.0" styleClass="btn" stylesheets="@mainpage.css" text="Transfer" textFill="WHITE">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -224,7 +224,7 @@
                <Image url="@Images/screenshot.png" />
             </image>
          </ImageView>
-         <AnchorPane fx:id="deletepane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css">
+         <AnchorPane fx:id="deletepane" layoutX="306.0" layoutY="22.0" prefHeight="695.0" prefWidth="694.0" styleClass="rightadminpanel" stylesheets="@mainpage.css" visible="false">
             <children>
                <Label layoutX="267.0" layoutY="70.0" prefHeight="54.0" prefWidth="159.0" text="Delete Account">
                   <font>

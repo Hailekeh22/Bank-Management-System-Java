@@ -343,6 +343,93 @@ private void deleteAccount() {
 
     
     //DELETE ACCOUNT FUNCTIONALITY ENDS
+
+
+
+    //MONEY TRANSFER SECTION STARTS
+
+    @FXML
+    private TextField reciveraccount;
+
+    @FXML
+    private TextField senderaccount;
+
+    @FXML
+    private TextField sendingamount;
+    
+    @FXML
+    private void transferMoney() {
+    String senderAccountNumber = senderaccount.getText();
+    String receiverAccountNumber = reciveraccount.getText();
+    String amountStr = sendingamount.getText();
+
+    if (senderAccountNumber.isEmpty() || receiverAccountNumber.isEmpty() || amountStr.isEmpty()) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Please Enter All The Inputs");
+        return;
+    }
+
+    try {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
+
+      
+        String senderBalanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
+        PreparedStatement senderBalanceStatement = connection.prepareStatement(senderBalanceQuery);
+        senderBalanceStatement.setString(1, senderAccountNumber);
+        ResultSet senderBalanceResult = senderBalanceStatement.executeQuery();
+
+        if (senderBalanceResult.next()) {
+            int senderBalance = senderBalanceResult.getInt("amount");
+            int amount = Integer.parseInt(amountStr);
+
+            if (senderBalance >= amount) {
+                
+                int newSenderBalance = senderBalance - amount;
+                String withdrawQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
+                PreparedStatement withdrawStatement = connection.prepareStatement(withdrawQuery);
+                withdrawStatement.setInt(1, newSenderBalance);
+                withdrawStatement.setString(2, senderAccountNumber);
+                withdrawStatement.executeUpdate();
+
+                
+                String receiverBalanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
+                PreparedStatement receiverBalanceStatement = connection.prepareStatement(receiverBalanceQuery);
+                receiverBalanceStatement.setString(1, receiverAccountNumber);
+                ResultSet receiverBalanceResult = receiverBalanceStatement.executeQuery();
+
+                if (receiverBalanceResult.next()) {
+                    int receiverBalance = receiverBalanceResult.getInt("amount");
+                    int newReceiverBalance = receiverBalance + amount;
+
+                    String creditQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
+                    PreparedStatement creditStatement = connection.prepareStatement(creditQuery);
+                    creditStatement.setInt(1, newReceiverBalance);
+                    creditStatement.setString(2, receiverAccountNumber);
+                    creditStatement.executeUpdate();
+
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Money transferred successfully.");
+                    
+                    reciveraccount.setText("");
+                    senderaccount.setText("");
+                    sendingamount.setText("");
+                    initializetable(); 
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Receiver account not found.");
+                }
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "Insufficient balance in the sender's account.");
+            }
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Error", "Sender account not found.");
+        }
+
+        connection.close();
+    } catch (SQLException | NumberFormatException e) {
+        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+    }
+}
+
+
+    //MONEY TRANSFER SECTION ENDS
       
     @FXML
     private void initialize() {       

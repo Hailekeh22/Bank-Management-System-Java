@@ -330,7 +330,7 @@ private void deleteAccount() {
                     showAlert(Alert.AlertType.ERROR, "Error", "Account not found or deletion failed.");
                 }
             } else {
-                showAlert(Alert.AlertType.WARNING, "Warning", "Account balance is not 0. Please withdraw the money before deleting the account.");
+                showAlert(Alert.AlertType.WARNING, "Warning", "Account balance is not 0. Please withdraw the money before closing your account.");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Error", "Account not found.");

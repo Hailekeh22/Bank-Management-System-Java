@@ -63,9 +63,9 @@ public class PrimaryController {
             } else {
                 if(result.next()){
                     alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("WELCOME!!");
+                    alert.setTitle("Login Sucess");
                     alert.setHeaderText(null);
-                    alert.setContentText("Login Sucess");
+                    alert.setContentText("WELCOME DEAR TELLER!!");
                     alert.showAndWait();
                     
                     
@@ -80,9 +80,9 @@ public class PrimaryController {
                 
                 } else {
                     alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Login Error");
+                    alert.setTitle("Login Error!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username or Password");
+                    alert.setContentText("Wrong Username or Password. Please Enter A valid Input");
                     alert.showAndWait();
                     username.setText("");
                     password.setText("");
@@ -94,7 +94,7 @@ public class PrimaryController {
     
 
     public void show() {
-    System.out.println("Hello you Clicked the login buton");
+    System.out.println("LOgin Button Working");
     };
     
     @FXML

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,7 +40,7 @@ public class SecondaryController {
     @FXML
     private AnchorPane homepane;
     
-    // CUSTOMER REGISTRATION SECTION STARTS
+    // CUSTOMER REGISTRATION CODE STARTS
     
     @FXML
     private TextField firstNameField;
@@ -64,125 +63,135 @@ public class SecondaryController {
     
     @FXML
     private void registerUser() {
-        String firstName = firstNameField.getText();
-        String lastName = lastNameField.getText();
+        String fname = firstNameField.getText();
         String sex = sexField.getText();
-        String phoneNumber = phoneNumberField.getText();
-        String address = addressField.getText();
-        String initialDeposit = initialDepositField.getText();
+        String phoneno = phoneNumberField.getText();
+        String lname = lastNameField.getText();     
+        String addressvalue = addressField.getText();
+        String initialDepositvalue = initialDepositField.getText();
 
         
-        if (firstName.isEmpty() || lastName.isEmpty() || sex.isEmpty() || phoneNumber.isEmpty() || address.isEmpty() || initialDeposit.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR,"Error", "PLease Fill all the Inputs First");
+        if (fname.isEmpty() 
+             || lname.isEmpty() || sex.isEmpty() || phoneno.isEmpty() 
+             || addressvalue.isEmpty() || initialDepositvalue.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR,"Error", "PLease Fill All The Inputs First Before Submiting");
+            
             return;
         }
 
        
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root","h@ile22199253");
-            String sql = "INSERT INTO customers (firstname, lastname, sex, phonenumber, address, amount) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
+            String sqlquery = "INSERT INTO customers (firstname, lastname, sex, phonenumber, address, amount) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sqlquery);
+            
+            statement.setString(1, fname);
+            statement.setString(2, lname);
             statement.setString(3, sex);
-            statement.setString(4, phoneNumber);
-            statement.setString(5, address);
-            statement.setString(6, initialDeposit);
+            statement.setString(4, phoneno);
+            statement.setString(5, addressvalue);
+            statement.setString(6, initialDepositvalue);
 
             int registerd = statement.executeUpdate();
             
-            if (registerd > 0) {
-                showAlert(Alert.AlertType.INFORMATION,"Success", "Sucessfully Registerd ");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                sexField.setText("");
-                phoneNumberField.setText("");
-                addressField.setText("");
-                initialDepositField.setText("");
-                initializetable();
+                 if (registerd > 0) {
+                     showAlert(Alert.AlertType.INFORMATION,"Success", "Successfully Registerd ");           
+                     firstNameField.setText("");
+                     lastNameField.setText("");
+                     sexField.setText("");
+                     phoneNumberField.setText("");
+                     addressField.setText("");
+                     initialDepositField.setText("");           
+                 initializetable();
             } else {
-                showAlert(Alert.AlertType.ERROR,"Error", "The Customer Is Not Registerd Please Try again");
-            }
-
-            connection.close();
-        } catch (SQLException e) {
+                showAlert(Alert.AlertType.ERROR,"Error", "The Customer Is not Registerd! Please Enter A Valid Input and Try Again later ");
+                }
+                 
+                 connection.close();
+        
+        } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR,"Error",e.getMessage());
         }
              
-}   // CUSTOMER REGISTRATION ENDS
+}   // CUSTOMER REGISTRATION CODE ENDS
     
     
     
-    //Alert Control section
+    //ALERT CONTROL CODE STARTS
 
     private void showAlert(Alert.AlertType type, String title, String message) {
-    Alert alert = new Alert(type);
-    alert.setTitle(title);
-    alert.setHeaderText(null);
-    alert.setContentText(message);
-    alert.showAndWait();
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     
-    //Alert Control section ends
+    //ALERT CONTROL CODE ENDS
 }
     
 
     
     
-    // DEPOSIT TO ACCOUNT FUNCTIONALITY STARTES
+    
+    // DEPOSIT TO ACCOUNT CODE STARTES
     
     @FXML
     private TextField accountnumberfordeposit;
     
     @FXML
     private TextField depositamount;
-    
-    
+      
     @FXML
-private void deposit() {
-    String accountNumber = accountnumberfordeposit.getText();
-    String depositAmount = depositamount.getText();
+    private void deposit() {
+    String accountnumbervalue = accountnumberfordeposit.getText();
+    String depositamountvalue = depositamount.getText();
 
-    if (accountNumber.isEmpty() || depositAmount.isEmpty()) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Fill The Inputs Before Depositing");
-        return;
-    }
+         if (accountnumbervalue.isEmpty() 
+             || depositamountvalue.isEmpty()) {   
+             showAlert(Alert.AlertType.ERROR, "Error", "Please Enter Account Number And Amount");
+      
+        }
 
     try {
         
-        int depositValue = Integer.parseInt(depositAmount);
+        int depositValue = Integer.parseInt(depositamountvalue);
 
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
-        String sql = "UPDATE customers SET amount = amount + ? WHERE accountnumber = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, depositValue);
-        statement.setString(2, accountNumber);
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
+            String sql = "UPDATE customers SET amount = amount + ? WHERE accountnumber = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            statement.setInt(1, depositValue);
+            statement.setString(2, accountnumbervalue);
 
-        int completedDeposit = statement.executeUpdate();
+        int depositdone = statement.executeUpdate();
 
-        if (completedDeposit > 0) {
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Sucessfully Deposited");
+        if (depositdone > 0) {
+            
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Sucessfully Deposited To Customers Account");
             accountnumberfordeposit.setText("");
             depositamount.setText("");
             initializetable();
+            
         } else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Deposit Failed. Account number Doesn't exist.");
+            
+            showAlert(Alert.AlertType.ERROR, "Error", "The Entered Account Number Is Not Found In The Database!");
         }
 
         connection.close();
-    } catch (NumberFormatException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Deposit Amount is not correct");
-    } catch (SQLException e) {
-        showAlert(Alert.AlertType.ERROR, "Error",e.getMessage());
-    }
+        
+    } catch (Exception e) {
+        
+        showAlert(Alert.AlertType.ERROR, "Error", "Please Enter A valid Amount " + e.getMessage());
+    } 
 }
 
-    // DEPOSIT TO ACCOUNT ENDS
+    // DEPOSIT TO ACCOUNT CODE ENDS
 
 
 
 
-    // WITHDRAWAL MONEY FUNCTIONALITY STARTS
+    // WITHDRAWAL MONEY CODE STARTS
 
     @FXML
     private TextField withdrawalamountinput;
@@ -192,66 +201,73 @@ private void deposit() {
 
     @FXML
     private void withdrawal() {
-    String accountNumber = witdrawalaccountinput.getText();
-    String withdrawalAmount = withdrawalamountinput.getText();
+        
+    String accountforwithdrawal = witdrawalaccountinput.getText();
+    String withdrawalamount = withdrawalamountinput.getText();
 
-    if (accountNumber.isEmpty() || withdrawalAmount.isEmpty()) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all the inputs.");
-        return;
-    }
+        if (accountforwithdrawal.isEmpty()|| withdrawalamount.isEmpty()) {
+            
+                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all the inputs.");
+                return;
+             }
 
     try {
         
-        int withdrawalValue = Integer.parseInt(withdrawalAmount);
+        int withdrawalvalue = Integer.parseInt(withdrawalamount);
 
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
-        String sql = "SELECT amount FROM customers WHERE accountnumber = ?";
-        PreparedStatement selectStatement = connection.prepareStatement(sql);
-        selectStatement.setString(1, accountNumber);
+        String withdrawalquery = "SELECT amount FROM customers WHERE accountnumber = ?";
+        PreparedStatement selectStatement = connection.prepareStatement(withdrawalquery);
+        selectStatement.setString(1, accountforwithdrawal);
 
         ResultSet resultSet = selectStatement.executeQuery();
 
         if (resultSet.next()) {
-            double currentAmount = resultSet.getDouble("amount");
+            
+            double currentamountvalue = resultSet.getDouble("amount");
 
-            if (currentAmount >= withdrawalValue) {
-                sql = "UPDATE customers SET amount = amount - ? WHERE accountnumber = ?";
-                PreparedStatement updateStatement = connection.prepareStatement(sql);
-                updateStatement.setDouble(1, withdrawalValue);
-                updateStatement.setString(2, accountNumber);
+            if (currentamountvalue >= withdrawalvalue) {
+                
+                withdrawalquery = "UPDATE customers SET amount = amount - ? WHERE accountnumber = ?";
+                PreparedStatement updateStatement = connection.prepareStatement(withdrawalquery);
+                updateStatement.setDouble(1, withdrawalvalue);
+                updateStatement.setString(2, accountforwithdrawal);
 
-                int rowsAffected = updateStatement.executeUpdate();
+                int withdrawaldone = updateStatement.executeUpdate();
 
-                if (rowsAffected > 0) {
+                if (withdrawaldone > 0) {
+                    
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Withdrawal successful .");
                     withdrawalamountinput.setText("");
                     witdrawalaccountinput.setText("");
                     initializetable();
                 } else {
-                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to withdraw.");
+                    
+                    showAlert(Alert.AlertType.ERROR, "Error", "Withdrawal Error!.");
                 }
             } else {
+                
                 showAlert(Alert.AlertType.ERROR, "Error", "Your Account Does't have the Requested Amount of Money");
             }
         } else {
+            
             showAlert(Alert.AlertType.ERROR, "Error", "Account Doesn't exist");
         }
-
         connection.close();
-    } catch (NumberFormatException e) {
+        
+    } catch (Exception e) {
+        
         showAlert(Alert.AlertType.ERROR, "Error", "Invalid withdrawal amount. Please enter a valid number.");
-    } catch (SQLException e) {
-        showAlert(Alert.AlertType.ERROR, "Error",e.getMessage());
-    }
+    } 
 }
 
-    // WITHDRAWAL MONEY FUNCTIONALITY ENDS
+    // WITHDRAWAL MONEY CODE ENDS
 
 
 
 
 
-    //SHOW USERS FUNCTIONALITY STARTS
+    //SHOW USERS CODE STARTS
 
     @FXML
     private TableView<Customer> tableView;
@@ -273,7 +289,9 @@ private void deposit() {
 
     @FXML
     private void initializetable() {
+        
         try {
+            
             accountNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomeraccount().asObject());
             firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomerfname());
             lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomerlname());
@@ -281,73 +299,86 @@ private void deposit() {
             amountColumn.setCellValueFactory(cellData -> cellData.getValue().getcustomeramount().asObject());
 
             tableView.setItems(CustomerDAO.getAllRecords());
-        } catch (SQLException | ClassNotFoundException e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Database error ");
         }
     }  
 
-    //SHOW USERS ENDS
+    //SHOW USERS CODE ENDS
     
     
-    //DELETE ACCOUNT FUNCTIONALITY STARTS
+    
+    
+    //DELETE ACCOUNT CODE STARTS
     
     @FXML
     private TextField accounttoremoveinput;
     
     @FXML
-private void deleteAccount() {
-    String accountNumber = accounttoremoveinput.getText();
+    private void deleteAccount() {
+        
+            String accountnumbertodelete = accounttoremoveinput.getText();
 
-    if (accountNumber.isEmpty()) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Please enter the account number to delete.");
-        return;
-    }
+            if (accountnumbertodelete.isEmpty()) {
+                   
+                    showAlert(Alert.AlertType.ERROR, "Error", "Please Enter the Account number to delete.");
+            }
 
     try {
+        
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
 
         
-        String balanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
-        PreparedStatement balanceStatement = connection.prepareStatement(balanceQuery);
-        balanceStatement.setString(1, accountNumber);
-        ResultSet balanceResult = balanceStatement.executeQuery();
+        String checkbalancequery = "SELECT amount FROM customers WHERE accountnumber = ?";
+        PreparedStatement accountamount = connection.prepareStatement(checkbalancequery);
+        accountamount.setString(1, accountnumbertodelete);
+        ResultSet result = accountamount.executeQuery();
 
-        if (balanceResult.next()) {
-            int balance = balanceResult.getInt("amount");
+        if (result.next()) {
+            
+            int balance = result.getInt("amount");
 
             if (balance == 0) {
+                
                 String deleteQuery = "DELETE FROM customers WHERE accountnumber = ?";
                 PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
-                deleteStatement.setString(1, accountNumber);
+                deleteStatement.setString(1, accountnumbertodelete);
 
-                int deletedRows = deleteStatement.executeUpdate();
+                int deleteuserdata = deleteStatement.executeUpdate();
 
-                if (deletedRows > 0) {
-                    showAlert(Alert.AlertType.INFORMATION, "Success", "Account deleted successfully.");
+                if (deleteuserdata > 0) {
+                    
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Account has been deleted successfully.");
                     accounttoremoveinput.setText("");
                     initializetable(); 
+                    
                 } else {
-                    showAlert(Alert.AlertType.ERROR, "Error", "Account not found or deletion failed.");
+                    
+                    showAlert(Alert.AlertType.ERROR, "Error", "Account did not found");
                 }
             } else {
-                showAlert(Alert.AlertType.WARNING, "Warning", "Account balance is not 0. Please withdraw the money before closing your account.");
+                
+                showAlert(Alert.AlertType.WARNING, "Warning", "Customers Account balance is not 0. Please withdraw the money before closing your account.");
             }
         } else {
+            
             showAlert(Alert.AlertType.ERROR, "Error", "Account not found.");
         }
 
         connection.close();
-    } catch (SQLException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+        
+    } catch (Exception e) {
+        
+        showAlert(Alert.AlertType.ERROR, "Error", "Can Occured on communication. with the database! " );
     }
 }
 
     
-    //DELETE ACCOUNT FUNCTIONALITY ENDS
+    //DELETE ACCOUNT CODE ENDS
 
 
 
-    //MONEY TRANSFER SECTION STARTS
+    //MONEY TRANSFER CODE STARTS
 
     @FXML
     private TextField reciveraccount;
@@ -360,138 +391,152 @@ private void deleteAccount() {
     
     @FXML
     private void transferMoney() {
-    String senderAccountNumber = senderaccount.getText();
-    String receiverAccountNumber = reciveraccount.getText();
-    String amountStr = sendingamount.getText();
+        
+    String senderaccountnumber = senderaccount.getText();
+    String reciveraccountnumber = reciveraccount.getText();
+    String amounttobetransferd = sendingamount.getText();
 
-    if (senderAccountNumber.isEmpty() || receiverAccountNumber.isEmpty() || amountStr.isEmpty()) {
+    if (senderaccountnumber.isEmpty() || reciveraccountnumber.isEmpty() || amounttobetransferd.isEmpty()) {
+        
         showAlert(Alert.AlertType.ERROR, "Error", "Please Enter All The Inputs");
-        return;
+        
     }
 
-    try {
+    try { 
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankingsys", "root", "h@ile22199253");
 
-      
         String senderBalanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
         PreparedStatement senderBalanceStatement = connection.prepareStatement(senderBalanceQuery);
-        senderBalanceStatement.setString(1, senderAccountNumber);
+        senderBalanceStatement.setString(1, senderaccountnumber);
         ResultSet senderBalanceResult = senderBalanceStatement.executeQuery();
 
         if (senderBalanceResult.next()) {
+            
             int senderBalance = senderBalanceResult.getInt("amount");
-            int amount = Integer.parseInt(amountStr);
+            int amount = Integer.parseInt(amounttobetransferd);
 
             if (senderBalance >= amount) {
                 
-                int newSenderBalance = senderBalance - amount;
+                int updatedsenderbalance = senderBalance - amount;
                 String withdrawQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
-                PreparedStatement withdrawStatement = connection.prepareStatement(withdrawQuery);
-                withdrawStatement.setInt(1, newSenderBalance);
-                withdrawStatement.setString(2, senderAccountNumber);
-                withdrawStatement.executeUpdate();
+                PreparedStatement withdrawallstatement = connection.prepareStatement(withdrawQuery);
+                withdrawallstatement.setInt(1, updatedsenderbalance);
+                withdrawallstatement.setString(2, senderaccountnumber);
+                withdrawallstatement.executeUpdate();
 
                 
-                String receiverBalanceQuery = "SELECT amount FROM customers WHERE accountnumber = ?";
-                PreparedStatement receiverBalanceStatement = connection.prepareStatement(receiverBalanceQuery);
-                receiverBalanceStatement.setString(1, receiverAccountNumber);
-                ResultSet receiverBalanceResult = receiverBalanceStatement.executeQuery();
+                String reciveraccountquery = "SELECT amount FROM customers WHERE accountnumber = ?";
+                PreparedStatement reciverbalancevalue = connection.prepareStatement(reciveraccountquery);
+                reciverbalancevalue.setString(1, reciveraccountnumber);
+                ResultSet reciverbalance = reciverbalancevalue.executeQuery();
 
-                if (receiverBalanceResult.next()) {
-                    int receiverBalance = receiverBalanceResult.getInt("amount");
-                    int newReceiverBalance = receiverBalance + amount;
+                if (reciverbalance.next()) {
+                    
+                    int reciveroldbalance = reciverbalance.getInt("amount");
+                    int recivernewbalance = reciveroldbalance + amount;
 
-                    String creditQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
-                    PreparedStatement creditStatement = connection.prepareStatement(creditQuery);
-                    creditStatement.setInt(1, newReceiverBalance);
-                    creditStatement.setString(2, receiverAccountNumber);
-                    creditStatement.executeUpdate();
+                    String creditbalancequery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
+                    PreparedStatement creditreciveraccount = connection.prepareStatement(creditbalancequery);
+                    creditreciveraccount.setInt(1, recivernewbalance);
+                    creditreciveraccount.setString(2, reciveraccountnumber);
+                    creditreciveraccount.executeUpdate();
 
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Money transferred successfully.");
                     
                     reciveraccount.setText("");
                     senderaccount.setText("");
                     sendingamount.setText("");
+                    
                     initializetable(); 
                 } else {
-                    showAlert(Alert.AlertType.ERROR, "Error", "Receiver account not found.");
+                    
+                    showAlert(Alert.AlertType.ERROR, "Error", "Receiver account is not found. Please Try Again!");
                 }
             } else {
+                
                 showAlert(Alert.AlertType.ERROR, "Error", "Insufficient balance in the sender's account.");
             }
         } else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Sender account not found.");
+            
+            showAlert(Alert.AlertType.ERROR, "Error", "Sender account is not found. Please Try Again!");
         }
 
         connection.close();
-    } catch (SQLException | NumberFormatException e) {
-        showAlert(Alert.AlertType.ERROR, "Error", "Database error: " + e.getMessage());
+    } catch (Exception e) {
+        
+        showAlert(Alert.AlertType.ERROR, "Error", "Error occured on Comunicating to the Database " );
     }
 }
 
-
-    //MONEY TRANSFER SECTION ENDS
+    //MONEY TRANSFER CODE ENDS
       
-    @FXML
-    private void initialize() {       
+    
+    
+        @FXML
+        private void initialize() {       
         showHomePage();
         initializetable();
-    }
+         }
 
-    @FXML
-    private void showHomePage() {
+        @FXML
+        private void showHomePage() {
         setVisibility(homepane);
-    }
+        }
     
-    @FXML
-    private void showDeleteAccountPage(){
+        @FXML
+        private void showDeleteAccountPage(){
         setVisibility(deletepane);
-    }
+        }
 
-    @FXML
-    private void showCreateAccountPage() {
+        @FXML
+        private void showCreateAccountPage() {
         setVisibility(createaccountpane);
-    }
+        }
 
-    @FXML
-    private void showDepositPage() {
+        @FXML
+        private void showDepositPage() {
         setVisibility(depositpane);
-    }
+        }
 
-    @FXML
-    private void showWithdrawalPage() {
+        @FXML
+        private void showWithdrawalPage() {
         setVisibility(withdrawalpane);
-    }
+        }
 
-    @FXML
-    private void showTransferPage() {
+        @FXML
+        private void showTransferPage() {
         setVisibility(transferpane);
-    }
+        }
 
-    @FXML
-    private void showAllCustomersPage() {
+        @FXML
+        private void showAllCustomersPage() {
         setVisibility(allcustomerspane);
-    }
+        }
     
+        
+        //LOGOUT CODE STARTS
     
-    @FXML
-    private void logout() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
-        Parent root = loader.load();
+        @FXML
+        private void logout() throws IOException {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("primary.fxml"));
+            Parent root = loader.load();
         
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Loging Out");
-        alert.setHeaderText(null);
-        alert.setContentText("Logout successful. See you soon!");
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Loging Out");
+            alert.setHeaderText(null);
+            alert.setContentText("Logout successful. See you soon!");
+            alert.showAndWait();
         
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) homepane.getScene().getWindow();
-        stage.setTitle("Zemen Bank");
-        stage.setScene(scene);
-        stage.show();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) homepane.getScene().getWindow();
+            stage.setTitle("Zemen Bank");
+            stage.setScene(scene);
+            stage.show();
     }
 
+        //LOGOUT CODE ENDS
+        
     private void setVisibility(AnchorPane pane) {
         homepane.setVisible(false);
         createaccountpane.setVisible(false);

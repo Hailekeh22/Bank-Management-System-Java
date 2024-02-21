@@ -417,20 +417,21 @@ public class SecondaryController {
 
             if (senderBalance >= amount) {
                 
-                int updatedsenderbalance = senderBalance - amount;
-                String withdrawQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
-                PreparedStatement withdrawallstatement = connection.prepareStatement(withdrawQuery);
-                withdrawallstatement.setInt(1, updatedsenderbalance);
-                withdrawallstatement.setString(2, senderaccountnumber);
-                withdrawallstatement.executeUpdate();
-
                 
+                String withdrawQuery = "UPDATE customers SET amount = ? WHERE accountnumber = ?";
+                         
                 String reciveraccountquery = "SELECT amount FROM customers WHERE accountnumber = ?";
                 PreparedStatement reciverbalancevalue = connection.prepareStatement(reciveraccountquery);
                 reciverbalancevalue.setString(1, reciveraccountnumber);
                 ResultSet reciverbalance = reciverbalancevalue.executeQuery();
 
                 if (reciverbalance.next()) {
+                    
+                    int updatedsenderbalance = senderBalance - amount;
+                    PreparedStatement withdrawallstatement = connection.prepareStatement(withdrawQuery);
+                    withdrawallstatement.setInt(1, updatedsenderbalance);
+                    withdrawallstatement.setString(2, senderaccountnumber);
+                    withdrawallstatement.executeUpdate();
                     
                     int reciveroldbalance = reciverbalance.getInt("amount");
                     int recivernewbalance = reciveroldbalance + amount;

@@ -42,10 +42,13 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="logoutbtn" layoutX="32.0" layoutY="627.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="226.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Log out" />
+            <Button fx:id="logoutbtn" layoutX="47.0" layoutY="648.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="198.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Log out">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font></Button>
             <Line endX="257.7929382324219" endY="-24.600006103515625" layoutX="14.0" layoutY="131.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="209.17160034179688" endY="-24.600006103515625" layoutX="-21.0" layoutY="152.0" startX="-98.30709838867188" startY="-24.599998474121094" stroke="WHITE" strokeWidth="3.0" />
-            <Line endX="-11.000030517578125" layoutX="301.0" layoutY="589.0" startX="-247.82839965820312" stroke="WHITE" strokeWidth="3.0" />
+            <Line endX="-11.000030517578125" layoutX="301.0" layoutY="607.0" startX="-247.82839965820312" stroke="WHITE" strokeWidth="3.0" />
                <Button fx:id="homebtn" layoutX="20.0" layoutY="175.0" mnemonicParsing="false" onAction="#showHomePage" prefHeight="43.0" prefWidth="251.0" styleClass="mainbtn" stylesheets="@mainpage.css" text="Home">
                   <font>
                      <Font size="14.0" />
@@ -209,9 +212,9 @@
                      <Image url="@Images/8A3A9262.jpg" />
                   </image>
                </ImageView>
-               <AnchorPane layoutX="242.0" layoutY="25.0" prefHeight="54.0" prefWidth="160.0" styleClass="admincontol" stylesheets="@mainpage.css">
+               <AnchorPane layoutX="242.0" layoutY="25.0" prefHeight="45.0" prefWidth="157.0" styleClass="admincontol" stylesheets="@mainpage.css">
                   <children>
-                     <Label layoutX="14.0" layoutY="7.0" prefHeight="27.0" prefWidth="178.0" text="HOME PAGE" textFill="WHITE">
+                     <Label layoutX="7.0" layoutY="3.0" prefHeight="38.0" prefWidth="171.0" text="HOME PAGE" textFill="WHITE">
                         <font>
                            <Font name="Arial Black" size="25.0" />
                         </font>

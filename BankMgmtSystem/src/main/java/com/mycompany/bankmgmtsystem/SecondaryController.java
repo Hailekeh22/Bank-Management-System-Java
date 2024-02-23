@@ -472,6 +472,7 @@ public class SecondaryController {
     //MONEY TRANSFER CODE ENDS
       
     
+    //PAGE TOOGLE CODE STARTS
     
         @FXML
         private void initialize() {       
@@ -513,6 +514,8 @@ public class SecondaryController {
         private void showAllCustomersPage() {
         setVisibility(allcustomerspane);
         }
+        
+        //PAGE TOOGLE CODE ENDS
     
         
         //LOGOUT CODE STARTS

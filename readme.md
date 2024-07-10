@@ -1,7 +1,7 @@
 Login Page
 
-![Login Page](images\loginPage.png)
+![Login Page](https://github.com/Hailekeh22/Bank-Management-System-Java/blob/main/images/loginPage.png)
 
 Main Page
 
-![Main Page](images\mainPage.png)
+![Main Page](https://github.com/Hailekeh22/Bank-Management-System-Java/blob/main/images/mainPage.png)
